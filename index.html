@@ -74,7 +74,22 @@
             leftCard.src = "./assets/placeholder_card_face.png";
         }
 
-        flipLeftCard()
+        //flipLeftCard()
+
+        let angle = -2;
+
+        function shakeLeftCard() {
+            const shake = setInterval(() => {
+                leftCard.style.transform=`rotate(${angle}deg)`;
+                angle = angle == -2 ? 2 : 2;
+            }, 100 );
+
+            setTimeout(() => {
+                clearInterval(shake);
+                leftCard.style.transform = "rotate(1deg)";
+            })
+        }
+        shakeLeftCard();
 
     </script>
 </body>
