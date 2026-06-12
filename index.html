@@ -39,55 +39,6 @@
             letter-spacing:0.6px;
         }
 
-        .cards{
-            justify-content: space-between;
-            gap: 20px;
-            padding: 10px;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-            width: 100%;
-            color:white;
-        }
-        .left-card.right-card{
-            border-radius: 8px;
-        }
-        .left-card{
-            grid-column: 2;
-            transform:rotate(1deg);
-        }
-        .right-card{
-            grid-column: 5;
-
-            animation: shake 1s alternate infinite;
-        }
-
-        @keyframes shake{
-            from{
-                transform: rotate(-3deg);
-            }to{
-                transform: rotate(3deg);
-            }
-        }
-        .roundselector{
-            min-width:160px
-        }
-        .round{
-            font-size:12px;
-            color:#cfe6cf;
-        }
-        .round-count{
-            font-weight:700;
-            font-size:18px;
-        }
-
-        .status-row{
-            display:flex;
-            gap:20px;
-            align-items:center;
-            justify-content:center;
-            margin-bottom:18px;
-        }
-
         .pill{
             background:rgba(255,255,255,0.04);
             padding:10px 14px;
@@ -116,6 +67,23 @@
             box-shadow:0 6px 12px rgba(0,0,0,0.2);
         }
         button:active{transform:translateY(1px)}
+
+        @keyframes wobble {
+            0%{ transform: translateY(0) rotate(0deg); }
+            25%{ transform: translateY(-6px) rotate(-3deg); }
+            50%{ transform: translateY(0) rotate(3deg); }
+            75%{ transform: translateY(-4px) rotate(-2deg); }
+            100%{ transform: translateY(0) rotate(0deg); }
+        }
+        @keyframes shakeLR {
+            0%{ transform: translateX(0); }
+            20%{ transform: translateX(-6px); }
+            40%{ transform: translateX(6px); }
+            60%{ transform: translateX(-4px); }
+            80%{ transform: translateX(4px); }
+            100%{ transform: translateX(0); }
+        }
+
     </style>
 </head>
 <body>
