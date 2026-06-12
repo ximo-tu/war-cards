@@ -35,28 +35,12 @@
         .right-card{
             transform:rotate(-1deg);
         }*/
-
-        .labels {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-            width: 100%;
-            color:white;
-        }
-
-        .left {
-            grid-column: 2;
-            text-align: center;
-        }
-
-        .right {
-            grid-column: 5;
-            text-align: center;
-        }
         
         .cards{
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
             width: 100%;
+            border-radius: 8px;
             
         }
         .left-card{
@@ -73,13 +57,9 @@
     </header>
 
     <main>
-        <div class="labels">
-            <p class="left">Your Card</p>
-            <p class="right">Opponent Card</p>
-        </div>
-
         <div class="cards">
             <div class="left-card">
+                <p>Your Card</p>
                 <img 
                     src="./assets/black.png" 
                     class="card"
@@ -88,6 +68,7 @@
             </div>
 
             <div class="right-card">
+                <p class="right">Opponent Card</p>
                 <img src="./assets/10C.png" class="card" id="right-card">
             </div>
         </div>
