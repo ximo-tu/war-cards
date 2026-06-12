@@ -28,6 +28,14 @@
             display: block;
             border-radius: 8px;
         }
+        
+        .left-card{
+            transform: rotate(1deg);
+        }
+
+        .right-card{
+            transform:rotate(-1deg);)
+        }
     </style>
 </head>
 <body>
@@ -42,11 +50,11 @@
         </div>
 
         <div class="cards">
-            <div class="card">
+            <div class="left-card">
                 <img src="./assets/placeholder_card_back.png" class="card">
             </div>
 
-            <div class="card">
+            <div class="right-card">
                 <img src="./assets/placeholder_card_back.png" class="card">
             </div>
         </div>
@@ -55,6 +63,7 @@
     <footer>
     </footer>
     
-    <script src=app.js defer></script>
+    <script src=game.js></script>
+    <script src=test.js defer></script>
 </body>
 </html>
