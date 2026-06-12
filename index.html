@@ -20,9 +20,8 @@
             padding: 10px;
         }
 
-        .card{
+       /*.card{
             flex:1;
-
             width: 100%;
             height: auto;
             display: block;
@@ -35,21 +34,36 @@
 
         .right-card{
             transform:rotate(-1deg);
+        }*/
+
+        .labels {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+            width: 100%;
+            color:white;
         }
 
-        .labels{
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            padding: 0 10px;
-        }
-
-        .labels p{
-            flex:1;
+        .left {
+            grid-column: 2;
             text-align: center;
-            margin: 0 0 10px 0;
-            font-weight: bold;
-            color:white
+        }
+
+        .right {
+            grid-column: 5;
+            text-align: center;
+        }
+        
+        .cards{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+            width: 100%;
+            
+        }
+        .left-card{
+            grid-column: 2;
+        }
+        .right-card{
+            grid-column: 5;
         }
     </style>
 </head>
@@ -67,45 +81,19 @@
         <div class="cards">
             <div class="left-card">
                 <img 
-                    src="./assets/placeholder_card_back.png" 
+                    src="./assets/black.png" 
                     class="card"
                     id="left-card"
                 >
             </div>
 
             <div class="right-card">
-                <img src="./assets/placeholder_card_back.png" class="card" id="right-card">
+                <img src="./assets/10C.png" class="card" id="right-card">
             </div>
         </div>
     </main>
 
     <footer>
     </footer>
-    
-    <script>
-        const leftCard = document.getElementById("left-card");
-
-        function flipLeftCard() {
-            leftCard.src = "./assets/placeholder_card_face.png";
-        }
-
-        //flipLeftCard()
-
-        let angle = -2;
-
-        function shakeLeftCard() {
-            const shake = setInterval(() => {
-                leftCard.style.transform=`rotate(${angle}deg)`;
-                angle = angle == -2 ? 2 : 2;
-            }, 100 );
-
-            setTimeout(() => {
-                clearInterval(shake);
-                leftCard.style.transform = "rotate(1deg)";
-            })
-        }
-        shakeLeftCard();
-
-    </script>
 </body>
 </html>
