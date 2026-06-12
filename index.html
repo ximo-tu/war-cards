@@ -79,6 +79,25 @@
             font-weight:700;
             font-size:18px;
         }
+
+        .status-row{
+            display:flex;
+            gap:20px;
+            align-items:center;
+            justify-content:center;
+            margin-bottom:18px;
+        }
+
+        .pill{
+            background:rgba(255,255,255,0.04);
+            padding:10px 14px;
+            border-radius:10px;
+            min-width:120px;
+            text-align:center;
+            box-shadow:0 6px 12px rgba(0,0,0,0.25);
+        }
+        .pill .label{font-size:12px;color:#cfe6cf}
+        .pill .val{font-weight:700;font-size:18px;margin-top:6px;color:#fff}
     </style>
 </head>
 <body>
@@ -87,22 +106,20 @@
     </header>
 
     <main>
-        <div class="score-row">
-            <div class="score">
-                Player
-                <strong id="player-score">0</strong>
+        <div class="status-row">
+            <div class="pill" id="player-panel">
+                <div class="label">Player</div>
+                <div class="val" id="player-score">0</div>
             </div>
 
-            <div class="score">
-                Opponent
-                <strong id="player-score">0</strong>
+            <div class="pill" id="round-panel">
+                <div class="label">Round</div>
+                <div class="val" id="round-count">0</div>
             </div>
 
-            <div class="roundselector">
-                <div class="round">
-                    Round: 
-                </div>
-                <div class="round-count">0</div>
+            <div class="pill" id="opponent-panel">
+                <div class="label">Opponent</div>
+                <div class="val" id="opponent-score">0</div>
             </div>
         </div>
 
