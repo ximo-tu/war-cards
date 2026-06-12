@@ -36,6 +36,21 @@
         .right-card{
             transform:rotate(-1deg);
         }
+
+        .labels{
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 0 10px;
+        }
+
+        .labels p{
+            flex:1;
+            text-align: center;
+            margin: 0 0 10px 0;
+            font-weight: bold;
+            color:white
+        }
     </style>
 </head>
 <body>
@@ -45,8 +60,8 @@
 
     <main>
         <div class="labels">
-            <p class="left"></p>
-            <p class="right"></p>
+            <p class="left">Your Card</p>
+            <p class="right">Opponent Card</p>
         </div>
 
         <div class="cards">
