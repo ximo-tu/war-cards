@@ -13,41 +13,33 @@
         }
 
         .cards{
-            display:flex;
             justify-content: space-between;
             gap: 20px;
-            width: 100%;
             padding: 10px;
-        }
-
-       /*.card{
-            flex:1;
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 8px;
-        }
-        
-        .left-card{
-            transform: rotate(1deg);
-        }
-
-        .right-card{
-            transform:rotate(-1deg);
-        }*/
-        
-        .cards{
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
             width: 100%;
+            color:white;
+        }
+        .left-card.right-card{
             border-radius: 8px;
-            
         }
         .left-card{
             grid-column: 2;
+            transform:rotate(1deg);
         }
         .right-card{
             grid-column: 5;
+
+            animation: shake 1s reverse infinite;
+        }
+
+        @keyframes shake{
+            from{
+                transform: rotate(-3deg);
+            }to{
+                transform: rotate(3deg);
+            }
         }
     </style>
 </head>
