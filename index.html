@@ -92,20 +92,24 @@
             </div>
         </div>
 
-        <div class="cards">
-            <div class="left-card">
-                <p>Your Card</p>
-                <img 
-                    src="./assets/black.png" 
-                    class="card"
-                    id="left-card"
-                >
+        <div class="controls">
+                <button id="flip-btn">Flip Cards</button>
+                <button id="reset-btn">Reset Scores</button>
             </div>
 
-            <div class="right-card">
-                <p class="right">Opponent Card</p>
-                <img src="./assets/10C.png" class="card" id="right-card">
+            <div class="cards" aria-live="polite">
+                <div class="card-slot">
+                    <div class="label">Your Card</div>
+                    <img src="./assets/back.png" class="card" id="left-card" alt="player card">
             </div>
+
+            <div class="card-slot">
+                <div class="label">Opponent Card</div>
+                    <img src="./assets/back.png" class="card" id="right-card" alt="opponent card">
+                </div>
+            </div>
+
+            <div class="msg" id="message"></div>
         </div>
     </main>
 
