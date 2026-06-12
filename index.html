@@ -34,7 +34,7 @@
         }
 
         .right-card{
-            transform:rotate(-1deg);)
+            transform:rotate(-1deg);
         }
     </style>
 </head>
@@ -51,11 +51,15 @@
 
         <div class="cards">
             <div class="left-card">
-                <img src="./assets/placeholder_card_back.png" class="card">
+                <img 
+                    src="./assets/placeholder_card_back.png" 
+                    class="card"
+                    id="left-card"
+                >
             </div>
 
             <div class="right-card">
-                <img src="./assets/placeholder_card_back.png" class="card">
+                <img src="./assets/placeholder_card_back.png" class="card" id="right-card">
             </div>
         </div>
     </main>
@@ -63,7 +67,15 @@
     <footer>
     </footer>
     
-    <script src=game.js></script>
-    <script src=test.js defer></script>
+    <script>
+        const leftCard = document.getElementById("left-card");
+
+        function flipLeftCard() {
+            leftCard.src = "./assets/placeholder_card_face.png";
+        }
+
+        flipLeftCard()
+
+    </script>
 </body>
 </html>
