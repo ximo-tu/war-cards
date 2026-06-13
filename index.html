@@ -198,6 +198,7 @@
         const deck=[];
         const valueMap={};
 
+        // DOM! 
         const leftImg = document.getElementById('left-card');
         const rightImg = document.getElementById('rite-card');
         const flipBtn = document.getElementById('flip-btn');
@@ -207,26 +208,35 @@
         const roundEl = document.getElementById('round-count');
         const messageEl = document.getElementById('message');
 
-        let playerScore=0
-        let opponentScore=0
-        let round=0
-        let busy=false;
+        let state = { playerScore: 0, opponentScore: 0, round: 0, busy: false };
 
         // Oh boy now for the real code
         // Lets start with just pick a card
 
         function randCard(){ return deck[Math.floor(Math.random()*deck.length)]; }
 
-        // some trick i saw on stackoverflow that can be adapted here
-        async function animateImgs(imgs, ms=1000){
-            imgs.forEach(i=>i.classList.add('animate'));
-            return new Promise(res=>setTimeout(()=>{
-            imgs.forEach(i=>i.classList.remove('animate'));
-            res();
-            }, ms));
+        // Helpers
+        const randCard = () => deck[Math.floor(Math.random() * deck.length)];
+        const getCardValue = (card) => cardValues[card] || 0;
+        const cardName = (card) => card.replace('.png', '');
+
+        async function showCards(left, right, delay = 1000) {
+            [leftImg, rightImg].forEach(el => el.classList.add('animate'));
+            leftImg.src = `./assets/${left}`;
+            rightImg.src = `./assets/${right}`;
+            await new Promise(r => setTimeout(r, delay));
+            [leftImg, rightImg].forEach(el => el.classList.remove('animate'));
         }
 
-        
+        async function flipBack(delay = 420) {
+            [leftImg, rightImg].forEach(el => el.classList.add('animate'));
+            leftImg.src = './assets/back.png';
+            rightImg.src = './assets/back.png';
+            await new Promise(r => setTimeout(r, delay));
+            [leftImg, rightImg].forEach(el => el.classList.remove('animate'));
+        }
+
+
 
     </script>
 </body>
