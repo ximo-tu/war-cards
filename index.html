@@ -192,6 +192,7 @@
     </footer>
 
     <script>
+        // here we go!
         const ranks=[{n:'2',v:2},{n:'3',v:3},{n:'4',v:4},{n:'5',v:5},{n:'6',v:6},{n:'7',v:7},{n:'8',v:8},{n:'9',v:9},{n:'10',v:10},{n:'J',v:11},{n:'Q',v:12},{n:'K',v:13},{n:'A',v:14}];
         const suits=['H','D','C','S'];
         const deck=[];
@@ -205,6 +206,17 @@
         const oppnentScoreEl = document.getElementById('opponent-score');
         const roundEl = document.getElementById('round-count');
         const messageEl = document.getElementById('message');
+
+        let playerScore=0
+        let opponentScore=0
+        let round=0
+        let busy=false;
+
+        // Oh boy now for the real code
+        // Lets start with just pick a card
+
+        function randCard(){ return deck[Math.floor(Math.random()*deck.length)]; }
+
     </script>
 </body>
 </html>
