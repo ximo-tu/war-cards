@@ -74,6 +74,26 @@
             margin:22px 0;
         }
 
+        .card-box{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            gap:10px;
+            min-width:var(--card-w);
+        }
+        .card-box .label{font-size:13px;color:#dff0dff0}
+        img.card{
+            width:var(--card-w);
+            height:auto;
+            border-radius:var(--card-radius);
+            box-shadow:0 10px 24px rgba(0,0,0,0.45);
+            display:block;
+            backface-visibility:hidden;
+            transition:transform .18s ease, box-shadow .18s ease;
+            user-select:none;
+            -webkit-user-drag:none;
+        }
+
         @keyframes wobble {
             0%{ transform: translateY(0) rotate(0deg); }
             25%{ transform: translateY(-6px) rotate(-3deg); }
