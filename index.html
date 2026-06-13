@@ -217,6 +217,17 @@
 
         function randCard(){ return deck[Math.floor(Math.random()*deck.length)]; }
 
+        // some trick i saw on stackoverflow that can be adapted here
+        async function animateImgs(imgs, ms=1000){
+            imgs.forEach(i=>i.classList.add('animate'));
+            return new Promise(res=>setTimeout(()=>{
+            imgs.forEach(i=>i.classList.remove('animate'));
+            res();
+            }, ms));
+        }
+
+        
+
     </script>
 </body>
 </html>
