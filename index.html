@@ -237,7 +237,60 @@
         }
 
         // Oh boy the hardest part
-        async function playRound() {}
+        async function playRound() {
+            if (state.busy){ 
+                return;
+            }
+            state.busy = true;
+            messageEl.textContent = '';
+            state.round++;
+            roundEl.textContent = state.round;
+
+            // Pick a card... any card... but not really.
+            let playerCard = randCard();
+            let opponentCard = randCard();
+            let warRound = 0;
+
+            while (true) {
+                // Flip back animation
+                await flipBack(1000);
+
+                // Reveal cards
+                await showCards(playerCard, opponentCard, 220);
+
+                const pv = getCardValue(playerCard);
+                const ov = getCardValue(opponentCard);
+
+                if (pv > ov) {
+                    state.playerScore += warRound > 0 ? 2 : 1; 
+                    // Isnt this notation the coolest? One line instead of like 5
+                    
+                    playerScoreEl.textContent = state.playerScore;
+                    messageEl.textContent = `You ${warRound > 0 ? 'win the war' : 'win'} (${cardName(playerCard)} > ${cardName(opponentCard)}).`;
+                    
+                    break;
+                } else if (ov > pv) {
+                    state.opponentScore += warRound > 0 ? 2 : 1;
+
+                    opponentScoreEl.textContent = state.opponentScore;
+                    
+                    messageEl.textContent = `Opponent ${warRound > 0 ? 'wins the war' : 'wins'} (${cardName(opponentCard)} > ${cardName(playerCard)}).`;
+                    break;
+                } else {
+                    warRound++;
+                    if (warRound > 6) {
+                        messageEl.textContent = 'War unresolved — draw.';
+                        break;
+                    }
+                    messageEl.textContent = 'Tie — WAR!';
+                    await new Promise(r => setTimeout(r, 260));
+                    playerCard = randCard();
+                    opponentCard = randCard();
+                }
+            }
+
+            state.busy = false;
+        }
 
         function reset() {
             state = { playerScore: 0, opponentScore: 0, round: 0, busy: false };
