@@ -236,8 +236,24 @@
             [leftImg, rightImg].forEach(el => el.classList.remove('animate'));
         }
 
+        // Oh boy the hardest part
+        async function playRound() {}
 
+        function reset() {
+            state = { playerScore: 0, opponentScore: 0, round: 0, busy: false };
+            playerScoreEl.textContent = '0';
+            opponentScoreEl.textContent = '0';
+            roundEl.textContent = '0';
+            leftImg.src = './assets/back.png';
+            rightImg.src = './assets/back.png';
+            messageEl.textContent = 'Ready.';
+        }
 
+        flipBtn.addEventListener('click', playRound);
+        resetBtn.addEventListener('click', reset);
+        [leftImg, rightImg].forEach(i => i.ondragstart = () => false);
+
+        reset();
     </script>
 </body>
 </html>
