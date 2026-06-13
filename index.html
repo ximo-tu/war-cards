@@ -79,11 +79,11 @@
             flex-direction:column;
             align-items:center;
             gap:10px;
-            min-width:var(--card-w);
+            min-width:var(--card-width);
         }
-        .card-box .label{font-size:13px;color:#dff0dff0}
+        .card-box .label{font-size:13px;color:#dff0df}
         img.card{
-            width:var(--card-w);
+            width:var(--card-width);
             height:auto;
             border-radius:var(--card-radius);
             box-shadow:0 10px 24px rgba(0,0,0,0.45);
@@ -140,7 +140,7 @@
 
         @media (max-width:720px){
             .cards-area{gap:22px;flex-direction:column;align-items:center}
-            :root{--card-w:160px}
+            :root{--card-width:160px}
             .status-row{flex-wrap:wrap}
         }
     </style>
@@ -192,31 +192,35 @@
     </footer>
 
     <script>
-        // here we go!
         const ranks=[{n:'2',v:2},{n:'3',v:3},{n:'4',v:4},{n:'5',v:5},{n:'6',v:6},{n:'7',v:7},{n:'8',v:8},{n:'9',v:9},{n:'10',v:10},{n:'J',v:11},{n:'Q',v:12},{n:'K',v:13},{n:'A',v:14}];
         const suits=['H','D','C','S'];
         const deck=[];
-        const valueMap={};
+        const cardValues={};
+
+        // Build deck and cardValues map
+        for(let suit of suits) {
+            for(let rank of ranks) {
+                const cardName = rank.n + suit;
+                deck.push(cardName + '.png');
+                cardValues[cardName + '.png'] = rank.v;
+            }
+        }
 
         // DOM! 
         const leftImg = document.getElementById('left-card');
-        const rightImg = document.getElementById('rite-card');
+        const rightImg = document.getElementById('right-card');
         const flipBtn = document.getElementById('flip-btn');
         const resetBtn = document.getElementById('reset-btn');
         const playerScoreEl = document.getElementById('player-score');
-        const oppnentScoreEl = document.getElementById('opponent-score');
+        const opponentScoreEl = document.getElementById('opponent-score');
         const roundEl = document.getElementById('round-count');
         const messageEl = document.getElementById('message');
 
         let state = { playerScore: 0, opponentScore: 0, round: 0, busy: false };
 
-        // Oh boy now for the real code
-        // Lets start with just pick a card
-
         function randCard(){ return deck[Math.floor(Math.random()*deck.length)]; }
 
         // Helpers
-        const randCard = () => deck[Math.floor(Math.random() * deck.length)];
         const getCardValue = (card) => cardValues[card] || 0;
         const cardName = (card) => card.replace('.png', '');
 
@@ -236,7 +240,6 @@
             [leftImg, rightImg].forEach(el => el.classList.remove('animate'));
         }
 
-        // Oh boy the hardest part
         async function playRound() {
             if (state.busy){ 
                 return;
@@ -246,16 +249,12 @@
             state.round++;
             roundEl.textContent = state.round;
 
-            // Pick a card... any card... but not really.
             let playerCard = randCard();
             let opponentCard = randCard();
             let warRound = 0;
 
             while (true) {
-                // Flip back animation
                 await flipBack(1000);
-
-                // Reveal cards
                 await showCards(playerCard, opponentCard, 220);
 
                 const pv = getCardValue(playerCard);
@@ -263,17 +262,12 @@
 
                 if (pv > ov) {
                     state.playerScore += warRound > 0 ? 2 : 1; 
-                    // Isnt this notation the coolest? One line instead of like 5
-                    
                     playerScoreEl.textContent = state.playerScore;
                     messageEl.textContent = `You ${warRound > 0 ? 'win the war' : 'win'} (${cardName(playerCard)} > ${cardName(opponentCard)}).`;
-                    
                     break;
                 } else if (ov > pv) {
                     state.opponentScore += warRound > 0 ? 2 : 1;
-
                     opponentScoreEl.textContent = state.opponentScore;
-                    
                     messageEl.textContent = `Opponent ${warRound > 0 ? 'wins the war' : 'wins'} (${cardName(opponentCard)} > ${cardName(playerCard)}).`;
                     break;
                 } else {
